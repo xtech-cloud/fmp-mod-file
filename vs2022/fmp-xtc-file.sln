@@ -1,0 +1,60 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmp-xtc-file-lib-mvcs", "fmp-xtc-file-lib-mvcs\fmp-xtc-file-lib-mvcs.csproj", "{C9CDD8DF-E07A-4631-BAF7-C08A216842BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmp-xtc-file-lib-proto", "fmp-xtc-file-lib-proto\fmp-xtc-file-lib-proto.csproj", "{857957DF-1634-4445-B94C-5B42F35061D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmp-xtc-file-lib-bridge", "fmp-xtc-file-lib-bridge\fmp-xtc-file-lib-bridge.csproj", "{609F9AD4-0532-4ADF-BA7B-53EDADF2C2C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmp-xtc-file-lib-razor", "fmp-xtc-file-lib-razor\fmp-xtc-file-lib-razor.csproj", "{CFC6815C-C27F-4611-96A6-0444469476AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmp-xtc-file-service-grpc", "fmp-xtc-file-service-grpc\fmp-xtc-file-service-grpc.csproj", "{C44074B7-F8EC-4AB5-9CC7-5D3873037BB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmp-xtc-file-service-grpc_Test", "fmp-xtc-file-service-grpc_Test\fmp-xtc-file-service-grpc_Test.csproj", "{7512F151-9190-45CB-B5BA-CC7E1E0F53AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmp-xtc-file-web-blazor", "fmp-xtc-file-web-blazor\fmp-xtc-file-web-blazor.csproj", "{0EBFB5DE-4528-4142-B4E2-9ACD317C49D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9CDD8DF-E07A-4631-BAF7-C08A216842BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9CDD8DF-E07A-4631-BAF7-C08A216842BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9CDD8DF-E07A-4631-BAF7-C08A216842BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9CDD8DF-E07A-4631-BAF7-C08A216842BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857957DF-1634-4445-B94C-5B42F35061D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857957DF-1634-4445-B94C-5B42F35061D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857957DF-1634-4445-B94C-5B42F35061D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857957DF-1634-4445-B94C-5B42F35061D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{609F9AD4-0532-4ADF-BA7B-53EDADF2C2C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{609F9AD4-0532-4ADF-BA7B-53EDADF2C2C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{609F9AD4-0532-4ADF-BA7B-53EDADF2C2C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{609F9AD4-0532-4ADF-BA7B-53EDADF2C2C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC6815C-C27F-4611-96A6-0444469476AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC6815C-C27F-4611-96A6-0444469476AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC6815C-C27F-4611-96A6-0444469476AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC6815C-C27F-4611-96A6-0444469476AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C44074B7-F8EC-4AB5-9CC7-5D3873037BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C44074B7-F8EC-4AB5-9CC7-5D3873037BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C44074B7-F8EC-4AB5-9CC7-5D3873037BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C44074B7-F8EC-4AB5-9CC7-5D3873037BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7512F151-9190-45CB-B5BA-CC7E1E0F53AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7512F151-9190-45CB-B5BA-CC7E1E0F53AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7512F151-9190-45CB-B5BA-CC7E1E0F53AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7512F151-9190-45CB-B5BA-CC7E1E0F53AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EBFB5DE-4528-4142-B4E2-9ACD317C49D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EBFB5DE-4528-4142-B4E2-9ACD317C49D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EBFB5DE-4528-4142-B4E2-9ACD317C49D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EBFB5DE-4528-4142-B4E2-9ACD317C49D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6AD0E35-2599-4E9A-BC9B-61755E98716E}
+	EndGlobalSection
+EndGlobal

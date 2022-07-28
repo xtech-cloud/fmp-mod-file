@@ -1,0 +1,156 @@
+syntax = "proto3";
+
+import "shared.proto";
+
+option csharp_namespace = "XTC.FMP.MOD.File.LIB.Proto";
+package xtc.fmp.file;
+
+// 存储桶
+service Bucket
+{
+    // 创建一个存储桶
+    rpc Make(BucketMakeRequest) returns (UuidResponse) { }
+    // 列举存储桶
+    rpc List(BucketListRequest) returns (BucketListResponse) { }
+    // 删除一个存储桶
+    rpc Remove(BucketRemoveRequest) returns (UuidResponse) { }
+    // 获取一个存储桶信息
+    rpc Get(BucketGetRequest) returns (BucketGetResponse) { }
+    // 精确查找一个存储桶信息
+    rpc Find(BucketFindRequest) returns (BucketFindResponse) { }
+    // 模糊查找一个存储桶信息
+    rpc Search(BucketSearchRequest) returns (BucketSearchResponse) { }
+    // 更新一个存储桶
+    rpc Update(BucketUpdateRequest) returns (UuidResponse) { }
+    // 重置一个存储桶的访问令牌
+    rpc ResetToken(BucketResetTokenRequest) returns (UuidResponse) { }
+    // 生成清单
+    rpc GenerateManifest(BucketGenerateManifestRequest) returns (BucketGenerateManifestResponse) { }
+    // 清空一个存储桶
+    rpc Clean(BucketCleanRequest) returns (UuidResponse) { }
+}
+
+// 创建存储桶的请求
+message BucketMakeRequest
+{
+    string name = 1;         // 名称
+    uint64 capacity = 2;     // 初始容量
+    Engine engine = 3;       // 存储引擎
+    string address = 4;      // 存储引擎的地址
+    string scope = 5;        // 存储引擎的作用范围
+    string accessKey = 6;    // 存储引擎的访问key
+    string accessSecret = 7; // 存储引擎的访问secret
+    string url = 8;          // 存储引擎的外部访问地址
+    string mode = 9;         // 存储模式，可选值为(hash,path),默认值为hash
+    string alias = 10;       // 别名
+}
+
+// 列举存储桶的回复
+message BucketListRequest
+{
+    int64 offset = 1; // 偏移值
+    int64 count = 2;  // 数量
+}
+
+// 列举存储桶的回复
+message BucketListResponse
+{
+    Status status = 1;                // 状态
+    uint64 total = 2;                 // 总数
+    repeated BucketEntity entity = 3; // 实体列表
+}
+
+// 删除存储桶的请求
+message BucketRemoveRequest
+{
+    string uuid = 1; // uuid
+}
+
+// 获取存储桶信息的请求
+message BucketGetRequest
+{
+    string uuid = 1; // uuid
+}
+
+// 获取存储桶信息的回复
+message BucketGetResponse
+{
+    Status status = 1;       // 状态
+    BucketEntity entity = 2; // 实体
+}
+
+// 精确查找一个存储桶信息的请求
+message BucketFindRequest
+{
+    string name = 1; // name
+}
+
+// 精确查找一个存储桶信息的回复
+message BucketFindResponse
+{
+    Status status = 1;       // 状态
+    BucketEntity entity = 2; // 实体
+}
+
+// 模糊查找存储桶信息的请求
+message BucketSearchRequest
+{
+    int64 offset = 1; // 偏移值
+    int64 count = 2;  // 数量
+    string name = 3;  // 名称
+    string alias = 4; // 别名
+}
+
+// 模糊查找存储桶信息的回复
+message BucketSearchResponse
+{
+    Status status = 1;                // 状态
+    uint64 total = 2;                 // 总数
+    repeated BucketEntity entity = 3; // 实体
+}
+
+// 更新存储桶的请求
+// 空值将不会被更新
+message BucketUpdateRequest
+{
+    string uuid = 1;         // 桶的UUID
+    string name = 2;         // 名称
+    uint64 capacity = 3;     // 初始容量
+    Engine engine = 4;       // 存储引擎
+    string address = 5;      // 存储引擎的地址
+    string scope = 6;        // 存储引擎的作用范围
+    string accessKey = 7;    // 存储引擎的访问key
+    string accessSecret = 8; // 存储引擎的访问secret
+    string url = 9;          // 存储引擎的外部访问地址
+    string alias = 10;       // 别名
+}
+
+// 重置存储桶的访问令牌
+message BucketResetTokenRequest
+{
+    string uuid = 1; // uuid
+}
+
+message BucketGenerateManifestRequest
+{
+    string uuid = 1;             // 桶的UUID
+    repeated string field = 2;   // 清单中包含的字段，可选值为(filepath,uname,url,md5,size)
+    string format = 3;           // 清单格式,可选值为(json)
+    string template = 4;         // 模板，生成内容会替换模板中$content$变量
+    string saveAs = 5;           // 保存在桶中的文件名,如果不为空，回复中的result字段为清单地址，如果为空，回复中的result为清单内容
+    repeated string include = 6; // 包含文件，支持通配符，空值时返回所有对象
+    repeated string exclude = 7; // 排除文件，支持通配符，运算顺序在include之后
+    string prefix = 8;           // 路径前缀
+}
+
+message BucketGenerateManifestResponse
+{
+    Status status = 1; // 状态
+    string result = 2; // 生成结果
+}
+
+message BucketCleanRequest
+{
+    string uuid = 1;   // uuid
+    string prefix = 2; // 路径前缀
+}

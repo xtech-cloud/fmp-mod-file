@@ -1,0 +1,61 @@
+
+@page "/xtc/file/bucket"
+
+<Space Direction="DirectionVHType.Vertical">
+    <SpaceItem>
+        <Button Type="@ButtonType.Primary" OnClick="@__debugClick">Call</Button>
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Make:</Text>
+        <TextArea @bind-Value="@__debugMake" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>List:</Text>
+        <TextArea @bind-Value="@__debugList" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Remove:</Text>
+        <TextArea @bind-Value="@__debugRemove" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Get:</Text>
+        <TextArea @bind-Value="@__debugGet" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Find:</Text>
+        <TextArea @bind-Value="@__debugFind" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Search:</Text>
+        <TextArea @bind-Value="@__debugSearch" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Update:</Text>
+        <TextArea @bind-Value="@__debugUpdate" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>ResetToken:</Text>
+        <TextArea @bind-Value="@__debugResetToken" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>GenerateManifest:</Text>
+        <TextArea @bind-Value="@__debugGenerateManifest" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Clean:</Text>
+        <TextArea @bind-Value="@__debugClean" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+</Space>
+@code {
+}

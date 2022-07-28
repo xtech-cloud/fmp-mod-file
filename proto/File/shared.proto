@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+option csharp_namespace = "XTC.FMP.MOD.File.LIB.Proto";
+package xtc.fmp.file;
+
+// 状态
+message Status
+{
+    int32 code = 1;     // 状态码
+    string message = 2; // 状态信息
+}
+
+// 空白请求
+message BlankRequest
+{
+}
+
+// 空白回复
+message BlankResponse
+{
+    Status status = 1; // 状态
+}
+
+// Uuid回复
+message UuidResponse
+{
+    Status status = 1; // 状态
+    string uuid = 2;   // uuid
+}
+
+// 存储引擎
+enum Engine
+{
+    ENGINE_INVALID = 0;  // 无效
+    ENGINE_LOCAL = 1;    // 本地
+    ENGINE_MINIO = 2;    // MinIO
+    ENGINE_QINIU = 3;    // 七牛
+    ENGINE_CUSTOM = 100; // 自定义
+}
+
+// 存储桶实体
+message BucketEntity
+{
+    string uuid = 1;          // uuid
+    string name = 2;          // 名称
+    string token = 3;         // 访问令牌
+    uint64 totalSize = 4;     // 空间总容量, 单位byte
+    uint64 usedSize = 5;      // 空间已用容量, 单位byte
+    Engine engine = 6;        // 存储引擎
+    string address = 7;       // 存储引擎的地址
+    string scope = 8;         // 作用范围
+    string accessKey = 9;     // 存储引擎的访问Key
+    string accessSecret = 10; // 存储引擎的访问Secret
+    string url = 21;          // 存储引擎的外部访问地址
+    string mode = 22;         // 存储桶的模式
+    string alias = 31;        // 别名
+}
+
+// 对象实体
+message ObjectEntity
+{
+    string uuid = 1; // 唯一ID
+    string path = 2; // 文件路径
+    string hash = 3; // MD5值
+    string url = 4;  // 地址
+    uint64 size = 5; // 文件大小
+}
+
+// Base64格式的源
+message Base64Source
+{
+    string path = 1;    // 文件路径
+    string hash = 2;    // 存储名
+    int64 size = 3;     // 文件的大小
+    string content = 4; // base64编码的内容
+}
+
+// Url格式的源
+message UrlSource
+{
+    string path = 1;    // 文件路径
+    string hash = 2;    // Url对应的文件的hash值
+    int64 size = 3;     // Url对应的文件的大小
+    string content = 4; // url地址
+}

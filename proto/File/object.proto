@@ -1,0 +1,195 @@
+syntax = "proto3";
+
+import "shared.proto";
+
+option csharp_namespace = "XTC.FMP.MOD.File.LIB.Proto";
+package xtc.fmp.file;
+
+// 存储对象
+service Object
+{
+    // 准备一个对象的元数据
+    rpc Prepare(ObjectPrepareRequest) returns (ObjectPrepareResponse) { }
+    // 写入一个对象的元数据
+    rpc Flush(ObjectFlushRequest) returns (UuidResponse) { }
+    // 获取一个对象信息
+    rpc Get(ObjectGetRequest) returns (ObjectGetResponse) { }
+    // 精确查找一个对象信息
+    rpc Find(ObjectFindRequest) returns (ObjectFindResponse) { }
+    // 删除一个对象
+    rpc Remove(ObjectRemoveRequest) returns (UuidResponse) { }
+    // 列举一个存储桶中的所有对象
+    rpc List(ObjectListRequest) returns (ObjectListResponse) { }
+    // 模糊查找存储桶中的对象
+    rpc Search(ObjectSearchRequest) returns (ObjectSearchResponse) { }
+    // 发布一个对象
+    // 生成指定有效期的公开链接, 对象的URL有值
+    rpc Publish(ObjectPublishRequest) returns (ObjectPublishResponse) { }
+    // 预览一个对象
+    // 生成临时的公开链接, 对象的URL无值
+    rpc Preview(ObjectPreviewRequest) returns (ObjectPreviewResponse) { }
+    // 撤回一个对象
+    // 撤回公开链接，对象的URL无值
+    rpc Retract(ObjectRetractRequest) returns (UuidResponse) { }
+    // 将Base64编码的内容转换为对象
+    rpc ConvertFromBase64(ObjectConvertFromBase64Request) returns (ObjectConvertFromBase64Response) { }
+    // 将Url地址转换为对象
+    rpc ConvertFromUrl(ObjectConvertFromUrlRequest) returns (ObjectConvertFromUrlResponse) { }
+}
+
+// 准备对象元数据的请求
+message ObjectPrepareRequest
+{
+    string bucket = 1; // 存储桶
+    string hash = 2;   // 如果存储桶的模式为hash, 使用此值作为存储引擎中的对象名
+    string path = 3;   // 如果存储桶的模式为path, 使用此值作为存储引擎中的对象名
+    uint64 size = 4;   // 对象大小
+    int64 expiry = 5;  // 令牌有效期
+    bool override = 6; // 覆盖存储引擎中已存在的对象, 仅path模式有效
+}
+
+// 准备对象的回复
+message ObjectPrepareResponse
+{
+    Status status = 1;      // 状态
+    Engine engine = 2;      // 存储引擎
+    string url = 3;         // 访问地址
+    string accessToken = 4; // 访问令牌
+}
+
+// 写入对象元数据的请求
+message ObjectFlushRequest
+{
+    string bucket = 1; // 存储桶(UUID)
+    string hash = 2;   // 对象的散列值
+    string path = 3;   // 对象的存储路径
+}
+
+// 发布对象的请求
+message ObjectPublishRequest
+{
+    string uuid = 1;   // uuid
+    uint64 expiry = 2; // 有效期，单位秒
+}
+
+// 发布对象的回复
+message ObjectPublishResponse
+{
+    Status status = 1; // 状态
+    string url = 2;    // 访问地址
+}
+
+// 预览对象的请求
+message ObjectPreviewRequest
+{
+    string uuid = 1;  // uuid
+    int64 expiry = 2; // 过期时间（单位：秒）
+}
+
+// 预览对象的回复
+message ObjectPreviewResponse
+{
+    Status status = 1; // 状态
+    string url = 2;    // 访问地址
+}
+
+// 撤回对象据的请求
+message ObjectRetractRequest
+{
+    string uuid = 1; // uuid
+}
+
+// 获取对象的请求
+message ObjectGetRequest
+{
+    string uuid = 1; // 唯一ID
+}
+
+// 获取对象的回复
+message ObjectGetResponse
+{
+    Status status = 1;       // 状态
+    ObjectEntity entity = 2; // 实体
+}
+
+// 查找对象的请求
+message ObjectFindRequest
+{
+    string bucket = 1; // 存储桶
+    string path = 2;   // 文件路径
+}
+
+// 查找对象的回复
+message ObjectFindResponse
+{
+    Status status = 1;       // 状态
+    ObjectEntity entity = 2; // 实体
+}
+
+// 删除对象的请求
+message ObjectRemoveRequest
+{
+    string uuid = 1; // uuid
+}
+
+// 列举对象的请求
+message ObjectListRequest
+{
+    int64 offset = 1;  // 偏移值
+    int64 count = 2;   // 数量
+    string bucket = 3; // 储存桶(UUID)
+}
+
+// 列举对象的回复
+message ObjectListResponse
+{
+    Status status = 1;                // 状态
+    uint64 total = 2;                 // 总数
+    repeated ObjectEntity entity = 3; // 实体列表
+}
+
+// 搜索对象的请求
+message ObjectSearchRequest
+{
+    int64 offset = 1;  // 偏移值
+    int64 count = 2;   // 数量
+    string bucket = 3; // 储存桶(UUID)
+    string prefix = 4; // 路径前缀
+    string name = 5;   // 名称
+}
+
+// 搜索对象的回复
+message ObjectSearchResponse
+{
+    Status status = 1;                // 状态
+    uint64 total = 2;                 // 总数
+    repeated ObjectEntity entity = 3; // 实体列表
+}
+
+// 将Base64编码的内容转换为对象的请求
+message ObjectConvertFromBase64Request
+{
+    string bucket = 1;                //  bucket's uuid
+    repeated Base64Source source = 2; // 源
+}
+
+// 将Base64编码的内容转换为对象的回复
+message ObjectConvertFromBase64Response
+{
+    Status status = 1;           // 状态
+    repeated string failure = 2; // 转换失败的文件
+}
+
+// 将Url转换为对象的请求
+message ObjectConvertFromUrlRequest
+{
+    string bucket = 1;             //  bucket's uuid
+    repeated UrlSource source = 2; // 源
+}
+
+// 将Url转换为对象的回复
+message ObjectConvertFromUrlResponse
+{
+    Status status = 1;           // 状态
+    repeated string failure = 2; // 转换失败的文件
+}

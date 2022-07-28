@@ -1,0 +1,71 @@
+
+@page "/xtc/file/object"
+
+<Space Direction="DirectionVHType.Vertical">
+    <SpaceItem>
+        <Button Type="@ButtonType.Primary" OnClick="@__debugClick">Call</Button>
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Prepare:</Text>
+        <TextArea @bind-Value="@__debugPrepare" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Flush:</Text>
+        <TextArea @bind-Value="@__debugFlush" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Get:</Text>
+        <TextArea @bind-Value="@__debugGet" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Find:</Text>
+        <TextArea @bind-Value="@__debugFind" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Remove:</Text>
+        <TextArea @bind-Value="@__debugRemove" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>List:</Text>
+        <TextArea @bind-Value="@__debugList" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Search:</Text>
+        <TextArea @bind-Value="@__debugSearch" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Publish:</Text>
+        <TextArea @bind-Value="@__debugPublish" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Preview:</Text>
+        <TextArea @bind-Value="@__debugPreview" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>Retract:</Text>
+        <TextArea @bind-Value="@__debugRetract" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>ConvertFromBase64:</Text>
+        <TextArea @bind-Value="@__debugConvertFromBase64" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+    <SpaceItem>
+        <Text>ConvertFromUrl:</Text>
+        <TextArea @bind-Value="@__debugConvertFromUrl" Rows="4" ReadOnly="true" />
+    </SpaceItem>
+
+</Space>
+@code {
+}
