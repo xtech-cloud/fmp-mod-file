@@ -11,7 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
 builder.Services.AddGrpcReflection();
 builder.Services.AddGrpcHealthChecks()
-                .AddCheck("StartKit", () => HealthCheckResult.Healthy());
+                .AddCheck("File", () => HealthCheckResult.Healthy());
+
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("Database"));
 
 MyProgram.PreBuild(builder);
 var app = builder.Build();
@@ -43,7 +45,7 @@ app.MapGrpcService<ObjectService>().EnableGrpcWeb();
 
 
 app.MapGrpcHealthChecksService();
-app.MapGet("/", () => "StartKit");
+app.MapGet("/", () => "File");
 
 IWebHostEnvironment env = app.Environment;
 

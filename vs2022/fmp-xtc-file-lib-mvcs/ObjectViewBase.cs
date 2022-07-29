@@ -11,13 +11,13 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Object视图层基类
     /// </summary>
-    public class ObjectBaseView : View
+    public class ObjectViewBase : View
     {
         /// <summary>
         /// 带uid参数的构造函数
         /// </summary>
         /// <param name="_uid">实例化后的唯一识别码</param>
-        public ObjectBaseView(string _uid) : base(_uid)
+        public ObjectViewBase(string _uid) : base(_uid)
         {
 
         }

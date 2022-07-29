@@ -6,7 +6,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Healthy数据层
     /// </summary>
-    public class HealthyModel : HealthyBaseModel
+    public class HealthyModel : HealthyModelBase
     {
         /// <summary>
         /// 完整名称

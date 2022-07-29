@@ -13,7 +13,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// Object的视图桥接层基类（协议部分）
     /// 处理UI的事件
     /// </summary>
-    public class ObjectBaseViewBridge : IObjectViewBridge
+    public class ObjectViewBridgeBase : IObjectViewBridge
     {
 
         /// <summary>

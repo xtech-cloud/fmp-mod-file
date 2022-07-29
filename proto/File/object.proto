@@ -52,9 +52,8 @@ message ObjectPrepareRequest
 message ObjectPrepareResponse
 {
     Status status = 1;      // 状态
-    Engine engine = 2;      // 存储引擎
-    string url = 3;         // 访问地址
-    string accessToken = 4; // 访问令牌
+    string url = 2;         // 访问地址
+    string accessToken = 3; // 访问令牌
 }
 
 // 写入对象元数据的请求

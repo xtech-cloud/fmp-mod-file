@@ -11,13 +11,13 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Healthy数据层基类
     /// </summary>
-    public class HealthyBaseModel : Model
+    public class HealthyModelBase : Model
     {
         /// <summary>
         /// 带uid参数的构造函数
         /// </summary>
         /// <param name="_uid">实例化后的唯一识别码</param>
-        public HealthyBaseModel(string _uid) : base(_uid)
+        public HealthyModelBase(string _uid) : base(_uid)
         {
 
         }

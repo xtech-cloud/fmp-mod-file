@@ -6,7 +6,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Bucket数据层
     /// </summary>
-    public class BucketModel : BucketBaseModel
+    public class BucketModel : BucketModelBase
     {
         /// <summary>
         /// 完整名称

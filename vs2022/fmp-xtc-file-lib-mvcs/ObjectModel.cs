@@ -6,7 +6,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Object数据层
     /// </summary>
-    public class ObjectModel : ObjectBaseModel
+    public class ObjectModel : ObjectModelBase
     {
         /// <summary>
         /// 完整名称

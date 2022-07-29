@@ -11,13 +11,13 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Bucket数据层基类
     /// </summary>
-    public class BucketBaseModel : Model
+    public class BucketModelBase : Model
     {
         /// <summary>
         /// 带uid参数的构造函数
         /// </summary>
         /// <param name="_uid">实例化后的唯一识别码</param>
-        public BucketBaseModel(string _uid) : base(_uid)
+        public BucketModelBase(string _uid) : base(_uid)
         {
 
         }

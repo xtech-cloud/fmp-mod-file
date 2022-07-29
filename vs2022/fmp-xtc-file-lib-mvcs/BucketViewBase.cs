@@ -11,13 +11,13 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Bucket视图层基类
     /// </summary>
-    public class BucketBaseView : View
+    public class BucketViewBase : View
     {
         /// <summary>
         /// 带uid参数的构造函数
         /// </summary>
         /// <param name="_uid">实例化后的唯一识别码</param>
-        public BucketBaseView(string _uid) : base(_uid)
+        public BucketViewBase(string _uid) : base(_uid)
         {
 
         }

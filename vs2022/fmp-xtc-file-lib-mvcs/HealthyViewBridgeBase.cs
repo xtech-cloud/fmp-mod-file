@@ -13,7 +13,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// Healthy的视图桥接层基类（协议部分）
     /// 处理UI的事件
     /// </summary>
-    public class HealthyBaseViewBridge : IHealthyViewBridge
+    public class HealthyViewBridgeBase : IHealthyViewBridge
     {
 
         /// <summary>

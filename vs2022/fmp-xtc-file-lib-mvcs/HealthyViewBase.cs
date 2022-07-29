@@ -11,13 +11,13 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Healthy视图层基类
     /// </summary>
-    public class HealthyBaseView : View
+    public class HealthyViewBase : View
     {
         /// <summary>
         /// 带uid参数的构造函数
         /// </summary>
         /// <param name="_uid">实例化后的唯一识别码</param>
-        public HealthyBaseView(string _uid) : base(_uid)
+        public HealthyViewBase(string _uid) : base(_uid)
         {
 
         }

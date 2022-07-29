@@ -4,7 +4,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Bucket服务层
     /// </summary>
-    public class BucketService : BucketBaseService
+    public class BucketService : BucketServiceBase
     {
         /// <summary>
         /// 完整名称

@@ -471,6 +471,17 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
 
 
 
+    public class StorageDTO : IDTO
+    {
+        public StorageDTO(Storage _message)
+        {
+            message = _message;    
+        }
+        public readonly Storage message;
+    }
+
+
+
     public class BucketEntityDTO : IDTO
     {
         public BucketEntityDTO(BucketEntity _message)

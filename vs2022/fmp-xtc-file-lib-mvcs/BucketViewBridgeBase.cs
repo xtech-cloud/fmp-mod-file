@@ -13,7 +13,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// Bucket的视图桥接层基类（协议部分）
     /// 处理UI的事件
     /// </summary>
-    public class BucketBaseViewBridge : IBucketViewBridge
+    public class BucketViewBridgeBase : IBucketViewBridge
     {
 
         /// <summary>

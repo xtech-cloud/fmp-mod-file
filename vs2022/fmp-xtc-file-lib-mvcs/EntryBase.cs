@@ -40,7 +40,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// 模块入口基类
     /// </summary>
-    public class BaseEntry : UserData
+    public class EntryBase : UserData
     {
         /// <summary>
         /// 模块选项

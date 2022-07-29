@@ -6,7 +6,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Healthy视图层
     /// </summary>
-    public class HealthyView : HealthyBaseView
+    public class HealthyView : HealthyViewBase
     {
         /// <summary>
         /// 完整名称

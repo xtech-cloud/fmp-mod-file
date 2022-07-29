@@ -6,7 +6,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Bucket视图层
     /// </summary>
-    public class BucketView : BucketBaseView
+    public class BucketView : BucketViewBase
     {
         /// <summary>
         /// 完整名称

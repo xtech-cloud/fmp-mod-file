@@ -35,14 +35,8 @@ message BucketMakeRequest
 {
     string name = 1;         // 名称
     uint64 capacity = 2;     // 初始容量
-    Engine engine = 3;       // 存储引擎
-    string address = 4;      // 存储引擎的地址
-    string scope = 5;        // 存储引擎的作用范围
-    string accessKey = 6;    // 存储引擎的访问key
-    string accessSecret = 7; // 存储引擎的访问secret
-    string url = 8;          // 存储引擎的外部访问地址
-    string mode = 9;         // 存储模式，可选值为(hash,path),默认值为hash
-    string alias = 10;       // 别名
+    string remark = 3;      // 备注
+    Storage storage = 20;     // 存储引擎
 }
 
 // 列举存储桶的回复
@@ -98,7 +92,7 @@ message BucketSearchRequest
     int64 offset = 1; // 偏移值
     int64 count = 2;  // 数量
     string name = 3;  // 名称
-    string alias = 4; // 别名
+    string remark = 4; // 备注
 }
 
 // 模糊查找存储桶信息的回复
@@ -113,16 +107,11 @@ message BucketSearchResponse
 // 空值将不会被更新
 message BucketUpdateRequest
 {
-    string uuid = 1;         // 桶的UUID
+    string uuid = 1;         // UUID
     string name = 2;         // 名称
     uint64 capacity = 3;     // 初始容量
-    Engine engine = 4;       // 存储引擎
-    string address = 5;      // 存储引擎的地址
-    string scope = 6;        // 存储引擎的作用范围
-    string accessKey = 7;    // 存储引擎的访问key
-    string accessSecret = 8; // 存储引擎的访问secret
-    string url = 9;          // 存储引擎的外部访问地址
-    string alias = 10;       // 别名
+    string remark = 4;      // 备注
+    Storage storage = 20;     // 存储引擎
 }
 
 // 重置存储桶的访问令牌

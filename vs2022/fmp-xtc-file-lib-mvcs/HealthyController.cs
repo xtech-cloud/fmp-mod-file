@@ -4,7 +4,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Healthy控制层
     /// </summary>
-    public class HealthyController : HealthyBaseController
+    public class HealthyController : HealthyControllerBase
     {
         /// <summary>
         /// 完整名称

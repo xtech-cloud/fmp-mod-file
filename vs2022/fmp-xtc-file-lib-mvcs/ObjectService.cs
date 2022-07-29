@@ -4,7 +4,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Object服务层
     /// </summary>
-    public class ObjectService : ObjectBaseService
+    public class ObjectService : ObjectServiceBase
     {
         /// <summary>
         /// 完整名称

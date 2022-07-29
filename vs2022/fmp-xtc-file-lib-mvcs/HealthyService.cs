@@ -4,7 +4,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Healthy服务层
     /// </summary>
-    public class HealthyService : HealthyBaseService
+    public class HealthyService : HealthyServiceBase
     {
         /// <summary>
         /// 完整名称

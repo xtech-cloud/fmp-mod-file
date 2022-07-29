@@ -4,7 +4,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Object控制层
     /// </summary>
-    public class ObjectController : ObjectBaseController
+    public class ObjectController : ObjectControllerBase
     {
         /// <summary>
         /// 完整名称

@@ -29,13 +29,15 @@ message UuidResponse
 }
 
 // 存储引擎
-enum Engine
+message Storage
 {
-    ENGINE_INVALID = 0;  // 无效
-    ENGINE_LOCAL = 1;    // 本地
-    ENGINE_MINIO = 2;    // MinIO
-    ENGINE_QINIU = 3;    // 七牛
-    ENGINE_CUSTOM = 100; // 自定义
+    string driver = 1;       // 存储引擎驱动
+    string address = 2;      // 存储引擎的地址
+    string scope = 3;        // 存储引擎的作用范围
+    string accessKey = 4;    // 存储引擎的访问key
+    string accessSecret = 5; // 存储引擎的访问secret
+    string url = 6;          // 存储引擎的外部访问地址
+    string mode = 7;         // 存储模式，可选值为(hash,path),默认值为hash
 }
 
 // 存储桶实体
@@ -46,14 +48,8 @@ message BucketEntity
     string token = 3;         // 访问令牌
     uint64 totalSize = 4;     // 空间总容量, 单位byte
     uint64 usedSize = 5;      // 空间已用容量, 单位byte
-    Engine engine = 6;        // 存储引擎
-    string address = 7;       // 存储引擎的地址
-    string scope = 8;         // 作用范围
-    string accessKey = 9;     // 存储引擎的访问Key
-    string accessSecret = 10; // 存储引擎的访问Secret
-    string url = 21;          // 存储引擎的外部访问地址
-    string mode = 22;         // 存储桶的模式
-    string alias = 31;        // 别名
+    string remark = 6;        // 别名
+    Storage storage = 20;     // 存储引擎
 }
 
 // 对象实体

@@ -12,14 +12,14 @@ namespace XTC.FMP.MOD.File.App.Service
     /// <summary>
     /// Healthy基类
     /// </summary>
-    public class HealthyBaseService : Healthy.HealthyBase
+    public class HealthyServiceBase : LIB.Proto.Healthy.HealthyBase
     {
+    
 
-        public override Task<HealthyEchoResponse> Echo(HealthyEchoRequest _request, ServerCallContext _context)
+        public override async Task<HealthyEchoResponse> Echo(HealthyEchoRequest _request, ServerCallContext _context)
         {
-            return Task.FromResult(new HealthyEchoResponse
-            {
-                Status = new LIB.Proto.Status() { Code=-1, Message="Not Implemented"},
+            return await Task.Run(() => new HealthyEchoResponse {
+                    Status = new LIB.Proto.Status() { Code = -1, Message = "Not Implemented" },
             });
         }
 

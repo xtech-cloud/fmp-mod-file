@@ -6,7 +6,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// 模块入口
     /// </summary>
-    public class Entry : BaseEntry
+    public class Entry : EntryBase
     {
 
         /// <summary>

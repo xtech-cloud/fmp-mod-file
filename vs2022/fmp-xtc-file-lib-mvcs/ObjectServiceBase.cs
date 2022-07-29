@@ -11,15 +11,15 @@ using XTC.FMP.MOD.File.LIB.Proto;
 namespace XTC.FMP.MOD.File.LIB.MVCS
 {
     /// <summary>
-    /// Bucket服务层基类
+    /// Object服务层基类
     /// </summary>
-    public class BucketBaseService : Service
+    public class ObjectServiceBase : Service
     {
         /// <summary>
         /// 带uid参数的构造函数
         /// </summary>
         /// <param name="_uid">实例化后的唯一识别码</param>
-        public BucketBaseService(string _uid) : base(_uid)
+        public ObjectServiceBase(string _uid) : base(_uid)
         {
 
         }
@@ -35,13 +35,13 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
 
 
         /// <summary>
-        /// 调用Make
+        /// 调用Prepare
         /// </summary>
-        /// <param name="_request">Make的请求</param>
+        /// <param name="_request">Prepare的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallMake(BucketMakeRequest? _request)
+        public async Task<Error> CallPrepare(ObjectPrepareRequest? _request)
         {
-            getLogger()?.Trace("Call Make ...");
+            getLogger()?.Trace("Call Prepare ...");
             if(null == _request)
             {
                 return Error.NewNullErr("parameter:_request is null");
@@ -52,19 +52,19 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
                 return Error.NewNullErr("client is null");
             }
 
-            var response = await client.MakeAsync(_request);
-            getModel()?.UpdateProtoMake(response);
+            var response = await client.PrepareAsync(_request);
+            getModel()?.UpdateProtoPrepare(response);
             return Error.OK;
         }
 
         /// <summary>
-        /// 调用List
+        /// 调用Flush
         /// </summary>
-        /// <param name="_request">List的请求</param>
+        /// <param name="_request">Flush的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallList(BucketListRequest? _request)
+        public async Task<Error> CallFlush(ObjectFlushRequest? _request)
         {
-            getLogger()?.Trace("Call List ...");
+            getLogger()?.Trace("Call Flush ...");
             if(null == _request)
             {
                 return Error.NewNullErr("parameter:_request is null");
@@ -75,31 +75,8 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
                 return Error.NewNullErr("client is null");
             }
 
-            var response = await client.ListAsync(_request);
-            getModel()?.UpdateProtoList(response);
-            return Error.OK;
-        }
-
-        /// <summary>
-        /// 调用Remove
-        /// </summary>
-        /// <param name="_request">Remove的请求</param>
-        /// <returns>错误</returns>
-        public async Task<Error> CallRemove(BucketRemoveRequest? _request)
-        {
-            getLogger()?.Trace("Call Remove ...");
-            if(null == _request)
-            {
-                return Error.NewNullErr("parameter:_request is null");
-            }
-            var client = getGrpcClient();
-            if (null == client)
-            {
-                return Error.NewNullErr("client is null");
-            }
-
-            var response = await client.RemoveAsync(_request);
-            getModel()?.UpdateProtoRemove(response);
+            var response = await client.FlushAsync(_request);
+            getModel()?.UpdateProtoFlush(response);
             return Error.OK;
         }
 
@@ -108,7 +85,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
         /// </summary>
         /// <param name="_request">Get的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallGet(BucketGetRequest? _request)
+        public async Task<Error> CallGet(ObjectGetRequest? _request)
         {
             getLogger()?.Trace("Call Get ...");
             if(null == _request)
@@ -131,7 +108,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
         /// </summary>
         /// <param name="_request">Find的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallFind(BucketFindRequest? _request)
+        public async Task<Error> CallFind(ObjectFindRequest? _request)
         {
             getLogger()?.Trace("Call Find ...");
             if(null == _request)
@@ -150,11 +127,57 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
         }
 
         /// <summary>
+        /// 调用Remove
+        /// </summary>
+        /// <param name="_request">Remove的请求</param>
+        /// <returns>错误</returns>
+        public async Task<Error> CallRemove(ObjectRemoveRequest? _request)
+        {
+            getLogger()?.Trace("Call Remove ...");
+            if(null == _request)
+            {
+                return Error.NewNullErr("parameter:_request is null");
+            }
+            var client = getGrpcClient();
+            if (null == client)
+            {
+                return Error.NewNullErr("client is null");
+            }
+
+            var response = await client.RemoveAsync(_request);
+            getModel()?.UpdateProtoRemove(response);
+            return Error.OK;
+        }
+
+        /// <summary>
+        /// 调用List
+        /// </summary>
+        /// <param name="_request">List的请求</param>
+        /// <returns>错误</returns>
+        public async Task<Error> CallList(ObjectListRequest? _request)
+        {
+            getLogger()?.Trace("Call List ...");
+            if(null == _request)
+            {
+                return Error.NewNullErr("parameter:_request is null");
+            }
+            var client = getGrpcClient();
+            if (null == client)
+            {
+                return Error.NewNullErr("client is null");
+            }
+
+            var response = await client.ListAsync(_request);
+            getModel()?.UpdateProtoList(response);
+            return Error.OK;
+        }
+
+        /// <summary>
         /// 调用Search
         /// </summary>
         /// <param name="_request">Search的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallSearch(BucketSearchRequest? _request)
+        public async Task<Error> CallSearch(ObjectSearchRequest? _request)
         {
             getLogger()?.Trace("Call Search ...");
             if(null == _request)
@@ -173,13 +196,13 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
         }
 
         /// <summary>
-        /// 调用Update
+        /// 调用Publish
         /// </summary>
-        /// <param name="_request">Update的请求</param>
+        /// <param name="_request">Publish的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallUpdate(BucketUpdateRequest? _request)
+        public async Task<Error> CallPublish(ObjectPublishRequest? _request)
         {
-            getLogger()?.Trace("Call Update ...");
+            getLogger()?.Trace("Call Publish ...");
             if(null == _request)
             {
                 return Error.NewNullErr("parameter:_request is null");
@@ -190,19 +213,19 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
                 return Error.NewNullErr("client is null");
             }
 
-            var response = await client.UpdateAsync(_request);
-            getModel()?.UpdateProtoUpdate(response);
+            var response = await client.PublishAsync(_request);
+            getModel()?.UpdateProtoPublish(response);
             return Error.OK;
         }
 
         /// <summary>
-        /// 调用ResetToken
+        /// 调用Preview
         /// </summary>
-        /// <param name="_request">ResetToken的请求</param>
+        /// <param name="_request">Preview的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallResetToken(BucketResetTokenRequest? _request)
+        public async Task<Error> CallPreview(ObjectPreviewRequest? _request)
         {
-            getLogger()?.Trace("Call ResetToken ...");
+            getLogger()?.Trace("Call Preview ...");
             if(null == _request)
             {
                 return Error.NewNullErr("parameter:_request is null");
@@ -213,19 +236,19 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
                 return Error.NewNullErr("client is null");
             }
 
-            var response = await client.ResetTokenAsync(_request);
-            getModel()?.UpdateProtoResetToken(response);
+            var response = await client.PreviewAsync(_request);
+            getModel()?.UpdateProtoPreview(response);
             return Error.OK;
         }
 
         /// <summary>
-        /// 调用GenerateManifest
+        /// 调用Retract
         /// </summary>
-        /// <param name="_request">GenerateManifest的请求</param>
+        /// <param name="_request">Retract的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallGenerateManifest(BucketGenerateManifestRequest? _request)
+        public async Task<Error> CallRetract(ObjectRetractRequest? _request)
         {
-            getLogger()?.Trace("Call GenerateManifest ...");
+            getLogger()?.Trace("Call Retract ...");
             if(null == _request)
             {
                 return Error.NewNullErr("parameter:_request is null");
@@ -236,19 +259,19 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
                 return Error.NewNullErr("client is null");
             }
 
-            var response = await client.GenerateManifestAsync(_request);
-            getModel()?.UpdateProtoGenerateManifest(response);
+            var response = await client.RetractAsync(_request);
+            getModel()?.UpdateProtoRetract(response);
             return Error.OK;
         }
 
         /// <summary>
-        /// 调用Clean
+        /// 调用ConvertFromBase64
         /// </summary>
-        /// <param name="_request">Clean的请求</param>
+        /// <param name="_request">ConvertFromBase64的请求</param>
         /// <returns>错误</returns>
-        public async Task<Error> CallClean(BucketCleanRequest? _request)
+        public async Task<Error> CallConvertFromBase64(ObjectConvertFromBase64Request? _request)
         {
-            getLogger()?.Trace("Call Clean ...");
+            getLogger()?.Trace("Call ConvertFromBase64 ...");
             if(null == _request)
             {
                 return Error.NewNullErr("parameter:_request is null");
@@ -259,8 +282,31 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
                 return Error.NewNullErr("client is null");
             }
 
-            var response = await client.CleanAsync(_request);
-            getModel()?.UpdateProtoClean(response);
+            var response = await client.ConvertFromBase64Async(_request);
+            getModel()?.UpdateProtoConvertFromBase64(response);
+            return Error.OK;
+        }
+
+        /// <summary>
+        /// 调用ConvertFromUrl
+        /// </summary>
+        /// <param name="_request">ConvertFromUrl的请求</param>
+        /// <returns>错误</returns>
+        public async Task<Error> CallConvertFromUrl(ObjectConvertFromUrlRequest? _request)
+        {
+            getLogger()?.Trace("Call ConvertFromUrl ...");
+            if(null == _request)
+            {
+                return Error.NewNullErr("parameter:_request is null");
+            }
+            var client = getGrpcClient();
+            if (null == client)
+            {
+                return Error.NewNullErr("client is null");
+            }
+
+            var response = await client.ConvertFromUrlAsync(_request);
+            getModel()?.UpdateProtoConvertFromUrl(response);
             return Error.OK;
         }
 
@@ -269,10 +315,10 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
         /// 获取直系数据层
         /// </summary>
         /// <returns>数据层</returns>
-        protected BucketModel? getModel()
+        protected ObjectModel? getModel()
         {
             if(null == model_)
-                model_ = findModel(BucketModel.NAME) as BucketModel;
+                model_ = findModel(ObjectModel.NAME) as ObjectModel;
             return model_;
         }
 
@@ -280,22 +326,22 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
         /// 获取GRPC客户端
         /// </summary>
         /// <returns>GRPC客户端</returns>
-        protected Bucket.BucketClient? getGrpcClient()
+        protected Object.ObjectClient? getGrpcClient()
         {
             if (null == grpcChannel_)
                 return null;
 
-            if(null == clientBucket_)
+            if(null == clientObject_)
             {
-                clientBucket_ = new Bucket.BucketClient(grpcChannel_);
+                clientObject_ = new Object.ObjectClient(grpcChannel_);
             }
-            return clientBucket_;
+            return clientObject_;
         }
 
         /// <summary>
         /// GRPC客户端
         /// </summary>
-        protected Bucket.BucketClient? clientBucket_;
+        protected Object.ObjectClient? clientObject_;
 
         /// <summary>
         /// GRPC通道
@@ -305,7 +351,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
         /// <summary>
         /// 直系数据层
         /// </summary>
-        private BucketModel? model_;
+        private ObjectModel? model_;
     }
 
 }

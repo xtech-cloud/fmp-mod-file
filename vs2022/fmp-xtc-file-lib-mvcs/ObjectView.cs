@@ -6,7 +6,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Object视图层
     /// </summary>
-    public class ObjectView : ObjectBaseView
+    public class ObjectView : ObjectViewBase
     {
         /// <summary>
         /// 完整名称

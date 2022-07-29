@@ -5,7 +5,7 @@ using XTC.FMP.MOD.File.LIB.Proto;
 
 namespace XTC.FMP.MOD.File.App.Service
 {
-    public class HealthyService : HealthyBaseService
+    public class HealthyService : HealthyServiceBase
     {
     }
 }

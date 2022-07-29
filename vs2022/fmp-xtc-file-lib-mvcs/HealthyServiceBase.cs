@@ -13,13 +13,13 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
     /// <summary>
     /// Healthy服务层基类
     /// </summary>
-    public class HealthyBaseService : Service
+    public class HealthyServiceBase : Service
     {
         /// <summary>
         /// 带uid参数的构造函数
         /// </summary>
         /// <param name="_uid">实例化后的唯一识别码</param>
-        public HealthyBaseService(string _uid) : base(_uid)
+        public HealthyServiceBase(string _uid) : base(_uid)
         {
 
         }
