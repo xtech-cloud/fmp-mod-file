@@ -5,7 +5,8 @@ namespace XTC.FMP.MOD.File.App.Service
 {
     public class BucketDAO : DAO<BucketEntity>
     {
-        public BucketDAO(IOptions<DatabaseSettings> _settings) : base(_settings, "Bucket")
+        public BucketDAO(IOptions<DatabaseSettings> _settings)
+            : base(_settings, "Bucket")
         {
         }
 

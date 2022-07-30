@@ -46,12 +46,14 @@ namespace XTC.FMP.MOD.File.App.Service
             }
 
             bucket = new BucketEntity();
+            bucket.Uuid = Guid.NewGuid();
             bucket.Name = _request.Name;
             bucket.TotalSize = _request.Capacity;
             await bucketDAO_.CreateAsync(bucket);
 
             return new UuidResponse
             {
+                Status = new LIB.Proto.Status(),
                 Uuid = bucket.Uuid.ToString(),
             };
         }
