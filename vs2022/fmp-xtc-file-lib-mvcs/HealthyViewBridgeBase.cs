@@ -34,7 +34,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallEcho(dto?.message);
+            return await service.CallEcho(dto?.Value);
         }
 
 

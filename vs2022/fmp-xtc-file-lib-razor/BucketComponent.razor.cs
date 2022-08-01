@@ -4,6 +4,10 @@ using XTC.FMP.LIB.MVCS;
 using XTC.FMP.MOD.File.LIB.Proto;
 using XTC.FMP.MOD.File.LIB.Bridge;
 using XTC.FMP.MOD.File.LIB.MVCS;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Components.Forms;
+using System.ComponentModel;
+using AntDesign;
 
 namespace XTC.FMP.MOD.File.LIB.Razor
 {
@@ -21,80 +25,109 @@ namespace XTC.FMP.MOD.File.LIB.Razor
             {
                 if (null == razor_.messageService_)
                     return;
+
                 Task.Run(async () =>
                 {
-                    await razor_.messageService_.Success(_message);
-                }); 
+                    await razor_.messageService_.Error(_message);
+                    razor_.createLoading = false;
+                    razor_.StateHasChanged();
+                });
             }
 
 
             public void RefreshMake(IDTO _dto)
             {
-                var dto = _dto as UuidResponseDTO;
-                razor_.__debugMake = dto?.message.ToString();
+                //var dto = _dto as UuidResponseDTO;
+                razor_.createLoading = false;
+                razor_.visibleCreateModal = false;
+                razor_.StateHasChanged();
+
+                Task.Run(async () =>
+                {
+                    await razor_.listAll();
+                });
             }
 
             public void RefreshList(IDTO _dto)
             {
                 var dto = _dto as BucketListResponseDTO;
-                razor_.__debugList = dto?.message.ToString();
+                if (null == dto)
+                    return;
+
+                razor_.tableTotal = (int)dto.Value.Total;
+                razor_.tableModel.Clear();
+                foreach (var entity in dto.Value.Entity)
+                {
+
+                    razor_.tableModel.Add(new TableModel
+                    {
+                        Uuid = entity.Uuid,
+                        Name = entity.Name,
+                        Remark = entity.Remark,
+                        TotalSize = Utility.StorageToString(entity.TotalSize),
+                        UsedSize = Utility.StorageToString(entity.UsedSize),
+                    });
+                }
+                razor_.StateHasChanged();
             }
 
             public void RefreshRemove(IDTO _dto)
             {
                 var dto = _dto as UuidResponseDTO;
-                razor_.__debugRemove = dto?.message.ToString();
+                if (null == dto)
+                    return;
+                razor_.tableModel.RemoveAll((_item) =>
+                {
+                    return _item.Uuid?.Equals(dto.Value.Uuid) ?? false;
+                });
             }
 
             public void RefreshGet(IDTO _dto)
             {
                 var dto = _dto as BucketGetResponseDTO;
-                razor_.__debugGet = dto?.message.ToString();
             }
 
             public void RefreshFind(IDTO _dto)
             {
                 var dto = _dto as BucketFindResponseDTO;
-                razor_.__debugFind = dto?.message.ToString();
             }
 
             public void RefreshSearch(IDTO _dto)
             {
                 var dto = _dto as BucketSearchResponseDTO;
-                razor_.__debugSearch = dto?.message.ToString();
             }
 
             public void RefreshUpdate(IDTO _dto)
             {
                 var dto = _dto as UuidResponseDTO;
-                razor_.__debugUpdate = dto?.message.ToString();
             }
 
             public void RefreshResetToken(IDTO _dto)
             {
                 var dto = _dto as UuidResponseDTO;
-                razor_.__debugResetToken = dto?.message.ToString();
             }
 
             public void RefreshGenerateManifest(IDTO _dto)
             {
                 var dto = _dto as BucketGenerateManifestResponseDTO;
-                razor_.__debugGenerateManifest = dto?.message.ToString();
             }
 
             public void RefreshClean(IDTO _dto)
             {
                 var dto = _dto as UuidResponseDTO;
-                razor_.__debugClean = dto?.message.ToString();
             }
-
 
             private BucketComponent razor_;
         }
 
+
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
+            searchFormData[SearchField.Name.GetHashCode()] = new FormValue { Text = "名称", Value = "" };
+            searchFormData[SearchField.Remark.GetHashCode()] = new FormValue { Text = "备注", Value = "" };
+
+            await listAll();
         }
 
         private async Task __debugClick()
@@ -155,29 +188,171 @@ namespace XTC.FMP.MOD.File.LIB.Razor
             var dtoClean = new BucketCleanRequestDTO(reqClean);
             logger_?.Trace("invoke OnCleanSubmit");
             await bridge.OnCleanSubmit(dtoClean);
-
         }
 
 
-        private string? __debugMake;
+        #region Search
+        private class FormValue
+        {
+            public string? Text { get; set; }
+            public string? Value { get; set; }
+        }
 
-        private string? __debugList;
+        private bool searchLoading = false;
+        private AntDesign.Internal.IForm? searchForm;
+        private Dictionary<int, FormValue> searchFormData = new();
+        private bool searchExpand = false;
 
-        private string? __debugRemove;
+        private enum SearchField
+        {
+            Name,
+            Remark,
+        }
 
-        private string? __debugGet;
+        private async void onSearchSubmit(EditContext _context)
+        {
+            searchLoading = true;
+        }
 
-        private string? __debugFind;
+        private async void onSearchResetClick()
+        {
+            searchForm?.Reset();
+            await listAll();
+        }
+        #endregion
 
-        private string? __debugSearch;
+        #region Create Modal
+        private class CreateModel
+        {
+            [Required]
+            public string? Name { get; set; }
+            [Required]
+            public int Capacity { get; set; }
+            public string? Remark { get; set; }
+        }
 
-        private string? __debugUpdate;
+        private bool visibleCreateModal = false;
+        private bool createLoading = false;
+        private AntDesign.Internal.IForm? createForm;
+        private CreateModel createModel = new();
 
-        private string? __debugResetToken;
+        private void onCreateClick()
+        {
+            visibleCreateModal = true;
+        }
 
-        private string? __debugGenerateManifest;
+        private void onCreateModalOk()
+        {
+            createForm?.Submit();
+        }
 
-        private string? __debugClean;
+        private void onCreateModalCancel()
+        {
+            visibleCreateModal = false;
+        }
 
+        private async void onCreateSubmit(EditContext _context)
+        {
+            createLoading = true;
+            var bridge = (getFacade()?.getViewBridge() as IBucketViewBridge);
+            if (null == bridge)
+            {
+                logger_?.Error("bridge is null");
+                return;
+            }
+            var model = _context.Model as CreateModel;
+            if (null == model)
+            {
+                logger_?.Error("model is null");
+                return;
+            }
+            var req = new BucketMakeRequest();
+            req.Name = model.Name;
+            req.Capacity = ((ulong)model.Capacity) * 1024L;
+            req.Remark = model.Remark ?? "";
+            BucketMakeRequestDTO dto = new BucketMakeRequestDTO(req);
+            Error err = await bridge.OnMakeSubmit(dto);
+            if (null != err)
+            {
+                logger_?.Error(err.getMessage());
+            }
+        }
+
+
+        #endregion
+
+        #region Table
+        private class TableModel
+        {
+            public string? Uuid { get; set; }
+
+            [DisplayName("名称")]
+            public string? Name { get; set; }
+
+            [DisplayName("备注")]
+            public string? Remark { get; set; }
+            [DisplayName("总容量")]
+            public string? TotalSize { get; set; }
+            [DisplayName("已用容量")]
+            public string? UsedSize { get; set; }
+        }
+
+
+        private List<TableModel> tableModel = new();
+        private int tableTotal = 0;
+        private int tablePageIndex = 1;
+        private int tablePageSize = 50;
+
+        private async Task listAll()
+        {
+            var bridge = (getFacade()?.getViewBridge() as IBucketViewBridge);
+            if (null == bridge)
+            {
+                logger_?.Error("bridge is null");
+                return;
+            }
+            var req = new BucketListRequest();
+            req.Offset = (tablePageIndex-1) * tablePageSize;
+            req.Count = tablePageSize;
+            var dto = new BucketListRequestDTO(req);
+            Error err = await bridge.OnListSubmit(dto);
+            if (!Error.IsOK(err))
+            {
+                logger_?.Error(err.getMessage());
+            }
+        }
+
+        private async Task onConfirmDelete(string? _uuid)
+        {
+            if (string.IsNullOrEmpty(_uuid))
+                return;
+
+            var bridge = (getFacade()?.getViewBridge() as IBucketViewBridge);
+            if (null == bridge)
+            {
+                logger_?.Error("bridge is null");
+                return;
+            }
+            var req = new BucketRemoveRequest();
+            req.Uuid = _uuid;
+            var dto = new BucketRemoveRequestDTO(req);
+            Error err = await bridge.OnRemoveSubmit(dto);
+            if (!Error.IsOK(err))
+            {
+                logger_?.Error(err.getMessage());
+            }
+        }
+
+        private void onCancelDelete()
+        {
+            //Nothing to do
+        }
+
+        private async void onPageIndexChanged(PaginationEventArgs args)
+        {
+            tablePageIndex = args.Page;
+            await listAll();
+        }
+        #endregion
     }
 }

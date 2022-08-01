@@ -1,61 +1,88 @@
-
 @page "/xtc/file/bucket"
 
-<Space Direction="DirectionVHType.Vertical">
-    <SpaceItem>
-        <Button Type="@ButtonType.Primary" OnClick="@__debugClick">Call</Button>
-    </SpaceItem>
+<Card>
+    <Form @ref="searchForm"
+          Loading="searchLoading"
+          Model="searchFormData"
+          OnFinish="@onSearchSubmit">
+        <Row Gutter="24">
+            @for (var i = 0; i < (searchExpand ? searchFormData.Count : (searchFormData.Count < 3 ? searchFormData.Count : 3)); i++)
+            {
+                var index = i;
+                <GridCol Span="8" @key="index">
+                    <FormItem Label="@(context[index].Text)">
+                        <Input @bind-Value="@(context[index].Value)" Placeholder="请输入" />
+                    </FormItem>
+                </GridCol>
+            }
+        </Row>
+        <Row>
+            <GridCol Span="24" Style="text-align:right;">
+                <Button Type="primary" HtmlType="submit">查询</Button>
+                <Button Style="margin: 0 8px;" OnClick="@onSearchResetClick">重置</Button>
+                <!--
+                <a style="font-size:12px" onclick="()=>{}">
+                    <Icon Type="@(searchExpand?"up":"down")"></Icon>  Collapse
+                </a>
+                -->
+            </GridCol>
+        </Row>
+    </Form>
+</Card>
 
-    <SpaceItem>
-        <Text>Make:</Text>
-        <TextArea @bind-Value="@__debugMake" Rows="4" ReadOnly="true" />
-    </SpaceItem>
+<Card Style="margin-top:24px">
+    <div style="display:flex; margin-bottom:24px;">
+        <Button Type="@ButtonType.Primary" Icon="@IconType.Outline.Plus" OnClick="@onCreateClick">创建</Button>
+    </div>
+    <Table TItem="TableModel" DataSource="@tableModel" Total="@tableTotal" PageIndex="tablePageIndex" PageSize="tablePageSize" OnPageIndexChange="onPageIndexChanged">
+        <Column @bind-Field="@context.Name"></Column>
+        <Column @bind-Field="@context.Remark"></Column>
+        <Column @bind-Field="@context.TotalSize"></Column>
+        <Column @bind-Field="@context.UsedSize"></Column>
+        <ActionColumn Title="操作" Fixed="right" Width="100">
+            <Space Size=@("middle")>
+                <SpaceItem>
+                    <Popconfirm Title="确定要删除这个存储桶吗?"
+                                OnConfirm="@(()=>onConfirmDelete(context.Uuid))"
+                                OnCancel="onCancelDelete"
+                                OkText="确定"
+                                CancelText="取消">
+                        <a>删除</a>
+                    </Popconfirm>
+                </SpaceItem>
+            </Space>
+        </ActionColumn>
+    </Table>
+</Card>
 
-    <SpaceItem>
-        <Text>List:</Text>
-        <TextArea @bind-Value="@__debugList" Rows="4" ReadOnly="true" />
-    </SpaceItem>
+<Modal Title="创建存储桶"
+       Visible="@visibleCreateModal"
+       ConfirmLoading="@createLoading"
+       OnOk="@onCreateModalOk"
+       OnCancel="@onCreateModalCancel">
+    <Form Model="@createModel"
+          LabelColSpan="8"
+          WrapperColSpan="16"
+          OnFinish="onCreateSubmit"
+          @ref="@createForm">
+        <FormItem Label="名称">
+            <Input @bind-Value="@context.Name" />
+        </FormItem>
+        <FormItem Label="备注">
+            <Input @bind-Value="@context.Remark" />
+        </FormItem>
+        <FormItem Label="容量(GB)">
+            <Input Max="4" Type="number" Placeholder="0" @bind-Value="@context.Capacity" />
+        </FormItem>
+    </Form>
+</Modal>
 
-    <SpaceItem>
-        <Text>Remove:</Text>
-        <TextArea @bind-Value="@__debugRemove" Rows="4" ReadOnly="true" />
-    </SpaceItem>
+<style>
+    .card-search-col {
+        margin-right: 64px;
+        margin-bottom: 24px;
+    }
+</style>
 
-    <SpaceItem>
-        <Text>Get:</Text>
-        <TextArea @bind-Value="@__debugGet" Rows="4" ReadOnly="true" />
-    </SpaceItem>
-
-    <SpaceItem>
-        <Text>Find:</Text>
-        <TextArea @bind-Value="@__debugFind" Rows="4" ReadOnly="true" />
-    </SpaceItem>
-
-    <SpaceItem>
-        <Text>Search:</Text>
-        <TextArea @bind-Value="@__debugSearch" Rows="4" ReadOnly="true" />
-    </SpaceItem>
-
-    <SpaceItem>
-        <Text>Update:</Text>
-        <TextArea @bind-Value="@__debugUpdate" Rows="4" ReadOnly="true" />
-    </SpaceItem>
-
-    <SpaceItem>
-        <Text>ResetToken:</Text>
-        <TextArea @bind-Value="@__debugResetToken" Rows="4" ReadOnly="true" />
-    </SpaceItem>
-
-    <SpaceItem>
-        <Text>GenerateManifest:</Text>
-        <TextArea @bind-Value="@__debugGenerateManifest" Rows="4" ReadOnly="true" />
-    </SpaceItem>
-
-    <SpaceItem>
-        <Text>Clean:</Text>
-        <TextArea @bind-Value="@__debugClean" Rows="4" ReadOnly="true" />
-    </SpaceItem>
-
-</Space>
 @code {
 }

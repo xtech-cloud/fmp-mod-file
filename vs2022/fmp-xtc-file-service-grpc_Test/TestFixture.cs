@@ -1,4 +1,5 @@
-﻿using XTC.FMP.MOD.File.App.Service;
+
+using XTC.FMP.MOD.File.App.Service;
 
 /// <summary>
 /// 测试上下文，用于共享测试资源
@@ -15,9 +16,21 @@ public class TestFixture : TestFixtureBase
         base.Dispose();
     }
 
+
     protected override void newBucketService()
     {
         serviceBucket_ = new BucketService(new BucketDAO(new DatabaseOptions()));
     }
-}
 
+    protected override void newHealthyService()
+    {
+        serviceHealthy_ = new HealthyService();
+    }
+
+    protected override void newObjectService()
+    {
+        throw new NotImplementedException();
+        //serviceObject_ = new ObjectService(new ObjectDAO(new DatabaseOptions()));
+    }
+
+}

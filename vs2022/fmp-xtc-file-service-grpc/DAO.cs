@@ -46,6 +46,13 @@ namespace XTC.FMP.MOD.File.App.Service
            await collection_.InsertOneAsync(_entity);
 
         /// <summary>
+        /// 异步计算数量
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<long> CountAsync() =>
+            await collection_.CountDocumentsAsync(_=>true);
+
+        /// <summary>
         /// 异步列举实体
         /// </summary>
         /// <param name="_offset">偏移量</param>
@@ -60,7 +67,7 @@ namespace XTC.FMP.MOD.File.App.Service
         /// <param name="_uuid">实体的uuid</param>
         /// <returns></returns>
         public virtual async Task<T?> GetAsync(string _uuid) =>
-            await collection_.Find(x => x.Uuid.ToString() == _uuid).FirstOrDefaultAsync();
+            await collection_.Find(x => x.Uuid.Equals(Guid.Parse(_uuid))).FirstOrDefaultAsync();
 
         /// <summary>
         /// 更新实体
@@ -69,7 +76,7 @@ namespace XTC.FMP.MOD.File.App.Service
         /// <param name="_entity">实体的实例</param>
         /// <returns></returns>
         public virtual async Task UpdateAsync(string _uuid, T _entity) =>
-            await collection_.ReplaceOneAsync(x => x.Uuid.ToString() == _uuid, _entity);
+            await collection_.ReplaceOneAsync(x => x.Uuid.Equals(Guid.Parse(_uuid)), _entity);
 
         /// <summary>
         /// 异步移除实体
@@ -77,6 +84,6 @@ namespace XTC.FMP.MOD.File.App.Service
         /// <param name="_uuid">实体的uuid</param>
         /// <returns></returns>
         public virtual async Task RemoveAsync(string _uuid) =>
-            await collection_.DeleteOneAsync(x => x.Uuid.ToString() == _uuid);
+            await collection_.DeleteOneAsync(x => x.Uuid.Equals(Guid.Parse(_uuid)));
     }
 }

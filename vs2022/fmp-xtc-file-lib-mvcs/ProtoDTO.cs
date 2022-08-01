@@ -11,517 +11,517 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
 
     public class BucketMakeRequestDTO : IDTO
     {
-        public BucketMakeRequestDTO(BucketMakeRequest _message)
+        public BucketMakeRequestDTO(BucketMakeRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketMakeRequest message;
+        public readonly BucketMakeRequest Value;
     }
 
 
 
     public class BucketListRequestDTO : IDTO
     {
-        public BucketListRequestDTO(BucketListRequest _message)
+        public BucketListRequestDTO(BucketListRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketListRequest message;
+        public readonly BucketListRequest Value;
     }
 
 
 
     public class BucketListResponseDTO : IDTO
     {
-        public BucketListResponseDTO(BucketListResponse _message)
+        public BucketListResponseDTO(BucketListResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketListResponse message;
+        public readonly BucketListResponse Value;
     }
 
 
 
     public class BucketRemoveRequestDTO : IDTO
     {
-        public BucketRemoveRequestDTO(BucketRemoveRequest _message)
+        public BucketRemoveRequestDTO(BucketRemoveRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketRemoveRequest message;
+        public readonly BucketRemoveRequest Value;
     }
 
 
 
     public class BucketGetRequestDTO : IDTO
     {
-        public BucketGetRequestDTO(BucketGetRequest _message)
+        public BucketGetRequestDTO(BucketGetRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketGetRequest message;
+        public readonly BucketGetRequest Value;
     }
 
 
 
     public class BucketGetResponseDTO : IDTO
     {
-        public BucketGetResponseDTO(BucketGetResponse _message)
+        public BucketGetResponseDTO(BucketGetResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketGetResponse message;
+        public readonly BucketGetResponse Value;
     }
 
 
 
     public class BucketFindRequestDTO : IDTO
     {
-        public BucketFindRequestDTO(BucketFindRequest _message)
+        public BucketFindRequestDTO(BucketFindRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketFindRequest message;
+        public readonly BucketFindRequest Value;
     }
 
 
 
     public class BucketFindResponseDTO : IDTO
     {
-        public BucketFindResponseDTO(BucketFindResponse _message)
+        public BucketFindResponseDTO(BucketFindResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketFindResponse message;
+        public readonly BucketFindResponse Value;
     }
 
 
 
     public class BucketSearchRequestDTO : IDTO
     {
-        public BucketSearchRequestDTO(BucketSearchRequest _message)
+        public BucketSearchRequestDTO(BucketSearchRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketSearchRequest message;
+        public readonly BucketSearchRequest Value;
     }
 
 
 
     public class BucketSearchResponseDTO : IDTO
     {
-        public BucketSearchResponseDTO(BucketSearchResponse _message)
+        public BucketSearchResponseDTO(BucketSearchResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketSearchResponse message;
+        public readonly BucketSearchResponse Value;
     }
 
 
 
     public class BucketUpdateRequestDTO : IDTO
     {
-        public BucketUpdateRequestDTO(BucketUpdateRequest _message)
+        public BucketUpdateRequestDTO(BucketUpdateRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketUpdateRequest message;
+        public readonly BucketUpdateRequest Value;
     }
 
 
 
     public class BucketResetTokenRequestDTO : IDTO
     {
-        public BucketResetTokenRequestDTO(BucketResetTokenRequest _message)
+        public BucketResetTokenRequestDTO(BucketResetTokenRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketResetTokenRequest message;
+        public readonly BucketResetTokenRequest Value;
     }
 
 
 
     public class BucketGenerateManifestRequestDTO : IDTO
     {
-        public BucketGenerateManifestRequestDTO(BucketGenerateManifestRequest _message)
+        public BucketGenerateManifestRequestDTO(BucketGenerateManifestRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketGenerateManifestRequest message;
+        public readonly BucketGenerateManifestRequest Value;
     }
 
 
 
     public class BucketGenerateManifestResponseDTO : IDTO
     {
-        public BucketGenerateManifestResponseDTO(BucketGenerateManifestResponse _message)
+        public BucketGenerateManifestResponseDTO(BucketGenerateManifestResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketGenerateManifestResponse message;
+        public readonly BucketGenerateManifestResponse Value;
     }
 
 
 
     public class BucketCleanRequestDTO : IDTO
     {
-        public BucketCleanRequestDTO(BucketCleanRequest _message)
+        public BucketCleanRequestDTO(BucketCleanRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketCleanRequest message;
+        public readonly BucketCleanRequest Value;
     }
 
 
 
     public class HealthyEchoRequestDTO : IDTO
     {
-        public HealthyEchoRequestDTO(HealthyEchoRequest _message)
+        public HealthyEchoRequestDTO(HealthyEchoRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly HealthyEchoRequest message;
+        public readonly HealthyEchoRequest Value;
     }
 
 
 
     public class HealthyEchoResponseDTO : IDTO
     {
-        public HealthyEchoResponseDTO(HealthyEchoResponse _message)
+        public HealthyEchoResponseDTO(HealthyEchoResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly HealthyEchoResponse message;
+        public readonly HealthyEchoResponse Value;
     }
 
 
 
     public class ObjectPrepareRequestDTO : IDTO
     {
-        public ObjectPrepareRequestDTO(ObjectPrepareRequest _message)
+        public ObjectPrepareRequestDTO(ObjectPrepareRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectPrepareRequest message;
+        public readonly ObjectPrepareRequest Value;
     }
 
 
 
     public class ObjectPrepareResponseDTO : IDTO
     {
-        public ObjectPrepareResponseDTO(ObjectPrepareResponse _message)
+        public ObjectPrepareResponseDTO(ObjectPrepareResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectPrepareResponse message;
+        public readonly ObjectPrepareResponse Value;
     }
 
 
 
     public class ObjectFlushRequestDTO : IDTO
     {
-        public ObjectFlushRequestDTO(ObjectFlushRequest _message)
+        public ObjectFlushRequestDTO(ObjectFlushRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectFlushRequest message;
+        public readonly ObjectFlushRequest Value;
     }
 
 
 
     public class ObjectPublishRequestDTO : IDTO
     {
-        public ObjectPublishRequestDTO(ObjectPublishRequest _message)
+        public ObjectPublishRequestDTO(ObjectPublishRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectPublishRequest message;
+        public readonly ObjectPublishRequest Value;
     }
 
 
 
     public class ObjectPublishResponseDTO : IDTO
     {
-        public ObjectPublishResponseDTO(ObjectPublishResponse _message)
+        public ObjectPublishResponseDTO(ObjectPublishResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectPublishResponse message;
+        public readonly ObjectPublishResponse Value;
     }
 
 
 
     public class ObjectPreviewRequestDTO : IDTO
     {
-        public ObjectPreviewRequestDTO(ObjectPreviewRequest _message)
+        public ObjectPreviewRequestDTO(ObjectPreviewRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectPreviewRequest message;
+        public readonly ObjectPreviewRequest Value;
     }
 
 
 
     public class ObjectPreviewResponseDTO : IDTO
     {
-        public ObjectPreviewResponseDTO(ObjectPreviewResponse _message)
+        public ObjectPreviewResponseDTO(ObjectPreviewResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectPreviewResponse message;
+        public readonly ObjectPreviewResponse Value;
     }
 
 
 
     public class ObjectRetractRequestDTO : IDTO
     {
-        public ObjectRetractRequestDTO(ObjectRetractRequest _message)
+        public ObjectRetractRequestDTO(ObjectRetractRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectRetractRequest message;
+        public readonly ObjectRetractRequest Value;
     }
 
 
 
     public class ObjectGetRequestDTO : IDTO
     {
-        public ObjectGetRequestDTO(ObjectGetRequest _message)
+        public ObjectGetRequestDTO(ObjectGetRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectGetRequest message;
+        public readonly ObjectGetRequest Value;
     }
 
 
 
     public class ObjectGetResponseDTO : IDTO
     {
-        public ObjectGetResponseDTO(ObjectGetResponse _message)
+        public ObjectGetResponseDTO(ObjectGetResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectGetResponse message;
+        public readonly ObjectGetResponse Value;
     }
 
 
 
     public class ObjectFindRequestDTO : IDTO
     {
-        public ObjectFindRequestDTO(ObjectFindRequest _message)
+        public ObjectFindRequestDTO(ObjectFindRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectFindRequest message;
+        public readonly ObjectFindRequest Value;
     }
 
 
 
     public class ObjectFindResponseDTO : IDTO
     {
-        public ObjectFindResponseDTO(ObjectFindResponse _message)
+        public ObjectFindResponseDTO(ObjectFindResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectFindResponse message;
+        public readonly ObjectFindResponse Value;
     }
 
 
 
     public class ObjectRemoveRequestDTO : IDTO
     {
-        public ObjectRemoveRequestDTO(ObjectRemoveRequest _message)
+        public ObjectRemoveRequestDTO(ObjectRemoveRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectRemoveRequest message;
+        public readonly ObjectRemoveRequest Value;
     }
 
 
 
     public class ObjectListRequestDTO : IDTO
     {
-        public ObjectListRequestDTO(ObjectListRequest _message)
+        public ObjectListRequestDTO(ObjectListRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectListRequest message;
+        public readonly ObjectListRequest Value;
     }
 
 
 
     public class ObjectListResponseDTO : IDTO
     {
-        public ObjectListResponseDTO(ObjectListResponse _message)
+        public ObjectListResponseDTO(ObjectListResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectListResponse message;
+        public readonly ObjectListResponse Value;
     }
 
 
 
     public class ObjectSearchRequestDTO : IDTO
     {
-        public ObjectSearchRequestDTO(ObjectSearchRequest _message)
+        public ObjectSearchRequestDTO(ObjectSearchRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectSearchRequest message;
+        public readonly ObjectSearchRequest Value;
     }
 
 
 
     public class ObjectSearchResponseDTO : IDTO
     {
-        public ObjectSearchResponseDTO(ObjectSearchResponse _message)
+        public ObjectSearchResponseDTO(ObjectSearchResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectSearchResponse message;
+        public readonly ObjectSearchResponse Value;
     }
 
 
 
     public class ObjectConvertFromBase64RequestDTO : IDTO
     {
-        public ObjectConvertFromBase64RequestDTO(ObjectConvertFromBase64Request _message)
+        public ObjectConvertFromBase64RequestDTO(ObjectConvertFromBase64Request _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectConvertFromBase64Request message;
+        public readonly ObjectConvertFromBase64Request Value;
     }
 
 
 
     public class ObjectConvertFromBase64ResponseDTO : IDTO
     {
-        public ObjectConvertFromBase64ResponseDTO(ObjectConvertFromBase64Response _message)
+        public ObjectConvertFromBase64ResponseDTO(ObjectConvertFromBase64Response _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectConvertFromBase64Response message;
+        public readonly ObjectConvertFromBase64Response Value;
     }
 
 
 
     public class ObjectConvertFromUrlRequestDTO : IDTO
     {
-        public ObjectConvertFromUrlRequestDTO(ObjectConvertFromUrlRequest _message)
+        public ObjectConvertFromUrlRequestDTO(ObjectConvertFromUrlRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectConvertFromUrlRequest message;
+        public readonly ObjectConvertFromUrlRequest Value;
     }
 
 
 
     public class ObjectConvertFromUrlResponseDTO : IDTO
     {
-        public ObjectConvertFromUrlResponseDTO(ObjectConvertFromUrlResponse _message)
+        public ObjectConvertFromUrlResponseDTO(ObjectConvertFromUrlResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectConvertFromUrlResponse message;
+        public readonly ObjectConvertFromUrlResponse Value;
     }
 
 
 
     public class StatusDTO : IDTO
     {
-        public StatusDTO(Status _message)
+        public StatusDTO(Status _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly Status message;
+        public readonly Status Value;
     }
 
 
 
     public class BlankRequestDTO : IDTO
     {
-        public BlankRequestDTO(BlankRequest _message)
+        public BlankRequestDTO(BlankRequest _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BlankRequest message;
+        public readonly BlankRequest Value;
     }
 
 
 
     public class BlankResponseDTO : IDTO
     {
-        public BlankResponseDTO(BlankResponse _message)
+        public BlankResponseDTO(BlankResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BlankResponse message;
+        public readonly BlankResponse Value;
     }
 
 
 
     public class UuidResponseDTO : IDTO
     {
-        public UuidResponseDTO(UuidResponse _message)
+        public UuidResponseDTO(UuidResponse _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly UuidResponse message;
+        public readonly UuidResponse Value;
     }
 
 
 
     public class StorageDTO : IDTO
     {
-        public StorageDTO(Storage _message)
+        public StorageDTO(Storage _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly Storage message;
+        public readonly Storage Value;
     }
 
 
 
     public class BucketEntityDTO : IDTO
     {
-        public BucketEntityDTO(BucketEntity _message)
+        public BucketEntityDTO(BucketEntity _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly BucketEntity message;
+        public readonly BucketEntity Value;
     }
 
 
 
     public class ObjectEntityDTO : IDTO
     {
-        public ObjectEntityDTO(ObjectEntity _message)
+        public ObjectEntityDTO(ObjectEntity _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly ObjectEntity message;
+        public readonly ObjectEntity Value;
     }
 
 
 
     public class Base64SourceDTO : IDTO
     {
-        public Base64SourceDTO(Base64Source _message)
+        public Base64SourceDTO(Base64Source _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly Base64Source message;
+        public readonly Base64Source Value;
     }
 
 
 
     public class UrlSourceDTO : IDTO
     {
-        public UrlSourceDTO(UrlSource _message)
+        public UrlSourceDTO(UrlSource _value)
         {
-            message = _message;    
+            Value = _value;    
         }
-        public readonly UrlSource message;
+        public readonly UrlSource Value;
     }
 
 

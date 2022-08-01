@@ -6,7 +6,7 @@
 public abstract class BucketUnitTestBase : IClassFixture<TestFixture>
 {
     /// <summary>
-    /// ²âÊÔÉÏÏÂÎÄ
+    /// æµ‹è¯•ä¸Šä¸‹æ–‡
     /// </summary>
     protected TestFixture fixture_ { get; set; }
 
@@ -14,6 +14,7 @@ public abstract class BucketUnitTestBase : IClassFixture<TestFixture>
     {
         fixture_ = _testFixture;
     }
+
 
     [Fact]
     public abstract Task MakeTest();

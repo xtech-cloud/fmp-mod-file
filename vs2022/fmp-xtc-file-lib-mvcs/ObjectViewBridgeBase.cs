@@ -34,7 +34,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallPrepare(dto?.message);
+            return await service.CallPrepare(dto?.Value);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallFlush(dto?.message);
+            return await service.CallFlush(dto?.Value);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallGet(dto?.message);
+            return await service.CallGet(dto?.Value);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallFind(dto?.message);
+            return await service.CallFind(dto?.Value);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallRemove(dto?.message);
+            return await service.CallRemove(dto?.Value);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallList(dto?.message);
+            return await service.CallList(dto?.Value);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallSearch(dto?.message);
+            return await service.CallSearch(dto?.Value);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallPublish(dto?.message);
+            return await service.CallPublish(dto?.Value);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallPreview(dto?.message);
+            return await service.CallPreview(dto?.Value);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallRetract(dto?.message);
+            return await service.CallRetract(dto?.Value);
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallConvertFromBase64(dto?.message);
+            return await service.CallConvertFromBase64(dto?.Value);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace XTC.FMP.MOD.File.LIB.MVCS
             {
                 return Error.NewNullErr("service is null");
             }
-            return await service.CallConvertFromUrl(dto?.message);
+            return await service.CallConvertFromUrl(dto?.Value);
         }
 
 

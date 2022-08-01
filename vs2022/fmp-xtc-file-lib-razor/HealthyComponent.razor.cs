@@ -31,7 +31,7 @@ namespace XTC.FMP.MOD.File.LIB.Razor
             public void RefreshEcho(IDTO _dto)
             {
                 var dto = _dto as HealthyEchoResponseDTO;
-                razor_.__debugEcho = dto?.message.ToString();
+                razor_.__debugEcho = dto?.Value.ToString();
             }
 
 

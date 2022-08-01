@@ -31,73 +31,73 @@ namespace XTC.FMP.MOD.File.LIB.Razor
             public void RefreshPrepare(IDTO _dto)
             {
                 var dto = _dto as ObjectPrepareResponseDTO;
-                razor_.__debugPrepare = dto?.message.ToString();
+                razor_.__debugPrepare = dto?.Value.ToString();
             }
 
             public void RefreshFlush(IDTO _dto)
             {
                 var dto = _dto as UuidResponseDTO;
-                razor_.__debugFlush = dto?.message.ToString();
+                razor_.__debugFlush = dto?.Value.ToString();
             }
 
             public void RefreshGet(IDTO _dto)
             {
                 var dto = _dto as ObjectGetResponseDTO;
-                razor_.__debugGet = dto?.message.ToString();
+                razor_.__debugGet = dto?.Value.ToString();
             }
 
             public void RefreshFind(IDTO _dto)
             {
                 var dto = _dto as ObjectFindResponseDTO;
-                razor_.__debugFind = dto?.message.ToString();
+                razor_.__debugFind = dto?.Value.ToString();
             }
 
             public void RefreshRemove(IDTO _dto)
             {
                 var dto = _dto as UuidResponseDTO;
-                razor_.__debugRemove = dto?.message.ToString();
+                razor_.__debugRemove = dto?.Value.ToString();
             }
 
             public void RefreshList(IDTO _dto)
             {
                 var dto = _dto as ObjectListResponseDTO;
-                razor_.__debugList = dto?.message.ToString();
+                razor_.__debugList = dto?.Value.ToString();
             }
 
             public void RefreshSearch(IDTO _dto)
             {
                 var dto = _dto as ObjectSearchResponseDTO;
-                razor_.__debugSearch = dto?.message.ToString();
+                razor_.__debugSearch = dto?.Value.ToString();
             }
 
             public void RefreshPublish(IDTO _dto)
             {
                 var dto = _dto as ObjectPublishResponseDTO;
-                razor_.__debugPublish = dto?.message.ToString();
+                razor_.__debugPublish = dto?.Value.ToString();
             }
 
             public void RefreshPreview(IDTO _dto)
             {
                 var dto = _dto as ObjectPreviewResponseDTO;
-                razor_.__debugPreview = dto?.message.ToString();
+                razor_.__debugPreview = dto?.Value.ToString();
             }
 
             public void RefreshRetract(IDTO _dto)
             {
                 var dto = _dto as UuidResponseDTO;
-                razor_.__debugRetract = dto?.message.ToString();
+                razor_.__debugRetract = dto?.Value.ToString();
             }
 
             public void RefreshConvertFromBase64(IDTO _dto)
             {
                 var dto = _dto as ObjectConvertFromBase64ResponseDTO;
-                razor_.__debugConvertFromBase64 = dto?.message.ToString();
+                razor_.__debugConvertFromBase64 = dto?.Value.ToString();
             }
 
             public void RefreshConvertFromUrl(IDTO _dto)
             {
                 var dto = _dto as ObjectConvertFromUrlResponseDTO;
-                razor_.__debugConvertFromUrl = dto?.message.ToString();
+                razor_.__debugConvertFromUrl = dto?.Value.ToString();
             }
 
 
